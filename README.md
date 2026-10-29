@@ -1,5 +1,6 @@
 # ESP32 Home Automation
-<img width="2016" height="1134" alt="output" src="https://github.com/user-attachments/assets/99c9636f-6efa-45ae-9a40-94d0aaca4946" />
+
+<img width="900" alt="Home automation dashboard preview" src="https://github.com/user-attachments/assets/99c9636f-6efa-45ae-9a40-94d0aaca4946" />
 
 Wi-Fi home automation with ESP32 nodes, a .NET 10 server, MQTT, SQLite, and a
 React dashboard built with Ant Design. This repository contains:
@@ -22,18 +23,14 @@ in place at startup.
 
 ![ESP32-WROOM circuit schematic with indicator LEDs and a MOSFET-switched load](docs/media/schematic.png)
 
-The drawing shows four indicator LEDs and one MOSFET-switched load. Add the
-dashboard screenshots and on/off and PWM GIFs to `docs/media/` when ready:
+The drawing shows four indicator LEDs and one MOSFET-switched load.
 
-| Media | Suggested filename | Shows |
-| --- | --- | --- |
-| Dashboard screenshot | `dashboard.png` | Areas, nodes, and output controls |
-| Automations screenshot | `automations.png` | Sensor rules, schedules, and timers |
-| On/off demo | `on-off.gif` | A dashboard switch changing a real output |
-| PWM demo | `pwm.gif` | Slider changing output duty cycle |<img width="480" height="270" alt="output" src="https://github.com/user-attachments/assets/6a82e8a0-a10f-4158-87bf-f91abb1334d9" />
-<img width="480" height="270" alt="output" src="https://github.com/user-attachments/assets/0acfbaf5-dbc0-4599-881e-3ba62a52bc2b" />
+### Output demos
 
+<img width="480" alt="Output control demo 1" src="https://github.com/user-attachments/assets/6a82e8a0-a10f-4158-87bf-f91abb1334d9" />
+<img width="480" alt="Output control demo 2" src="https://github.com/user-attachments/assets/0acfbaf5-dbc0-4599-881e-3ba62a52bc2b" />
 
+An automations screenshot can be added later as `docs/media/automations.png`.
 
 ## Architecture
 
