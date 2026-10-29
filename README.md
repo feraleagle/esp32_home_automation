@@ -49,7 +49,7 @@ supports sensor nodes through MQTT, but sensor firmware is not included here.
 
 The checked-in configuration is for a quick LAN test: the server connects to
 Mosquitto at `127.0.0.1:1883`; the ESP32 is currently configured for the
-`Arch Linux` Wi-Fi network and broker `192.168.12.1:1883`. If Mosquitto is
+`Arch Linux` Wi-Fi network and broker `YOUR_IP:1883`. If Mosquitto is
 already listening on port 1883, keep that instance. Otherwise, run it from
 this folder with:
 
