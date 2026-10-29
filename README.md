@@ -27,11 +27,8 @@ The drawing shows four indicator LEDs and one MOSFET-switched load.
 
 ### Output demos
 
-<img width="480" alt="Output control demo 1" src="https://github.com/user-attachments/assets/6a82e8a0-a10f-4158-87bf-f91abb1334d9" />
-<img width="480" alt="Output control demo 2" src="https://github.com/user-attachments/assets/0acfbaf5-dbc0-4599-881e-3ba62a52bc2b" />
-
-An automations screenshot can be added later as `docs/media/automations.png`.
-
+<img width="480" alt="Output On/Off" src="https://github.com/user-attachments/assets/6a82e8a0-a10f-4158-87bf-f91abb1334d9" />
+<img width="480" height="270" alt="Output PWM Control" src="https://github.com/user-attachments/assets/d8f5d60b-6983-4cd0-8572-c46ef26b8411" />
 ## Architecture
 
 ```mermaid
@@ -165,7 +162,7 @@ pretending a command already succeeded.
 
 Each output can be changed between **On/off** and **PWM** in its dashboard card.
 PWM uses the ESP32 LEDC peripheral at 5 kHz, with a slider from 0 to 100%.
-The output mode and last nonzero PWM level are saved in ESP32 NVS, so a reboot
+The output mode and last nonzero level are saved in ESP32 NVS, so a reboot
 keeps the configuration while starting the physical output off. The server
 stores the most recently reported mode and current level in SQLite. Changing
 mode also turns that output off. An on/off automation targeting a PWM output
