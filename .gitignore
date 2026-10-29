@@ -14,6 +14,7 @@ tests/obj/
 web/node_modules/
 web/dist/
 main/mqtt_ca_cert.pem
+main/local_config.h
 .env
 .env.*
 !.env.example

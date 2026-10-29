@@ -21,9 +21,7 @@
 #include "nvs_flash.h"
 
 /* Local test broker. Switch to mqtts:// and add a CA PEM for TLS later. */
-#define WIFI_SSID "Arch Linux"
-#define WIFI_PASSWORD "12345678"
-#define MQTT_BROKER_URI "mqtt://{YOUR_IP}:1883"
+#include "local_config.h"
 #define NTP_SERVER "pool.ntp.org"
 
 #ifdef MQTT_CUSTOM_CA

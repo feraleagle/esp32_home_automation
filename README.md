@@ -48,18 +48,17 @@ supports sensor nodes through MQTT, but sensor firmware is not included here.
 ## Run the central server
 
 The checked-in configuration is for a quick LAN test: the server connects to
-Mosquitto at `127.0.0.1:1883`; the ESP32 is currently configured for the
-`Arch Linux` Wi-Fi network and broker `192.168.12.1:1883`. If Mosquitto is
-already listening on port 1883, keep that instance. Otherwise, run it from
-this folder with:
+Mosquitto at `127.0.0.1:1883`. If Mosquitto is already listening on port 1883,
+keep that instance. Otherwise, run it from this folder with:
 
 ```sh
 mosquitto -c broker/test-mosquitto.conf -v
 ```
 
 The broker machine must be reachable from the ESP32, and port 1883 must accept
-LAN connections. Set `WIFI_SSID`, `WIFI_PASSWORD`, and `MQTT_BROKER_URI` in
-`main/esp32_init.c` for your network before flashing. A phone's USB tether and
+LAN connections. Copy `main/local_config.example.h` to `main/local_config.h`,
+then set `WIFI_SSID`, `WIFI_PASSWORD`, and `MQTT_BROKER_URI` there before
+flashing. The local header is ignored by Git. A phone's USB tether and
 Wi-Fi hotspot can put the PC and ESP32 on separate networks, so check their
 reachability. The broker must allow subscriptions to `devices/+/status`,
 `devices/+/led/state`, and `devices/+/sensor/state`, and publishing to
@@ -90,7 +89,7 @@ Open `http://<server-ip>:5050` on your LAN. SQLite is created automatically at
 
 For TLS later, configure a broker listener on port 8883, change `Mqtt:UseTls`
 to `true`, `Mqtt:Port` to `8883`, and the firmware URI to
-`mqtts://sky.local:8883`. If the broker uses a private CA, put its public PEM
+`mqtts://your-broker-name:8883` in `main/local_config.h`. If the broker uses a private CA, put its public PEM
 certificate at `main/mqtt_ca_cert.pem` and set `Mqtt:CaCertificatePath` to
 `../main/mqtt_ca_cert.pem`. Rebuild and reflash the ESP32 after changing the
 firmware URI or CA file. The broker certificate must contain the name used by
@@ -133,9 +132,11 @@ run `dotnet run --project tests` from this folder.
 
 ## Flash the ESP32
 
-The firmware keeps its Wi-Fi name and password hardcoded in `main/esp32_init.c`.
-The current test configuration connects to `mqtt://192.168.12.1:1883` without a
-certificate or MQTT login.
+The firmware keeps its Wi-Fi name, password, and broker address hardcoded in
+`main/local_config.h`, which stays on your PC and is ignored by Git. Start by
+copying `main/local_config.example.h` and setting the three values for your
+network. The demo broker uses plain MQTT on port 1883 without a certificate
+or MQTT login.
 
 When using TLS, the ESP32 validates the broker certificate against
 `main/mqtt_ca_cert.pem` if that file exists, or against ESP-IDF's public CA
