@@ -1,4 +1,5 @@
 # ESP32 Home Automation
+<img width="2016" height="1134" alt="output" src="https://github.com/user-attachments/assets/99c9636f-6efa-45ae-9a40-94d0aaca4946" />
 
 Wi-Fi home automation with ESP32 nodes, a .NET 10 server, MQTT, SQLite, and a
 React dashboard built with Ant Design. This repository contains:
@@ -29,7 +30,10 @@ dashboard screenshots and on/off and PWM GIFs to `docs/media/` when ready:
 | Dashboard screenshot | `dashboard.png` | Areas, nodes, and output controls |
 | Automations screenshot | `automations.png` | Sensor rules, schedules, and timers |
 | On/off demo | `on-off.gif` | A dashboard switch changing a real output |
-| PWM demo | `pwm.gif` | Slider changing output duty cycle |
+| PWM demo | `pwm.gif` | Slider changing output duty cycle |<img width="480" height="270" alt="output" src="https://github.com/user-attachments/assets/6a82e8a0-a10f-4158-87bf-f91abb1334d9" />
+<img width="480" height="270" alt="output" src="https://github.com/user-attachments/assets/0acfbaf5-dbc0-4599-881e-3ba62a52bc2b" />
+
+
 
 ## Architecture
 
