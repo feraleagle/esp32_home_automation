@@ -1,25 +1,23 @@
 # ESP32 Home Automation
 
-**A Wi-Fi automation system you can build, control, and extend.**
-
 <img width="900" alt="Home automation dashboard preview" src="https://github.com/user-attachments/assets/99c9636f-6efa-45ae-9a40-94d0aaca4946" />
 
-**ESP32** · **MQTT** · **.NET 10** · **React + Ant Design** · **SQLite**
+Wi-Fi home automation with ESP32 nodes, a .NET 10 server, MQTT, SQLite, and a
+React dashboard built with Ant Design. This repository contains:
 
-[See the demo](#see-it-in-action) · [How it works](#architecture) · [Run it](#quick-start)
+- `main/`: ESP32 firmware for five configurable GPIO outputs (4, 5, 18, 19, 21).
+- `server/`: .NET 10 API, MQTT connection, automation engine, and SQLite database.
+- `web/`: React dashboard built with Ant Design.
 
-ESP32 nodes announce themselves over MQTT and appear in the dashboard. Organize
-them by area, switch outputs, adjust PWM, or let sensor readings and schedules
-control them. SQLite saves the layout and automations; the ESP32 reports the
-actual output state.
+Areas group two node types: **sensors** report readings and **actuators** expose
+controllable outputs. ESP32 nodes announce themselves through MQTT and appear in
+the dashboard automatically. The dashboard can rename nodes, assign them to
+areas, switch outputs, create sensor rules, and set daily time windows. SQLite
+stores the layout, latest reported state, rules, and schedules; the ESP32
+remains the source of truth for output state. Existing databases are upgraded
+in place at startup.
 
-| Part | What it does |
-| --- | --- |
-| `main/` | ESP32 firmware for five configurable GPIO outputs |
-| `server/` | .NET API, MQTT gateway, automation engine, and SQLite |
-| `web/` | React dashboard with Ant Design and light/dark themes |
-
-## See it in action
+## Demo media
 
 ### Circuit schematic
 
@@ -27,14 +25,10 @@ actual output state.
 
 The drawing shows four indicator LEDs and one MOSFET-switched load.
 
-### On/off control
+### Output demos
 
 <img width="480" alt="Output On/Off" src="https://github.com/user-attachments/assets/6a82e8a0-a10f-4158-87bf-f91abb1334d9" />
-
-### PWM control
-
 <img width="480" height="270" alt="Output PWM Control" src="https://github.com/user-attachments/assets/d8f5d60b-6983-4cd0-8572-c46ef26b8411" />
-
 ## Architecture
 
 ```mermaid
@@ -49,9 +43,7 @@ flowchart LR
 The included ESP32 firmware implements an actuator node. The server also
 supports sensor nodes through MQTT, but sensor firmware is not included here.
 
-## Quick start
-
-### 1. Start the broker
+## Run the central server
 
 The checked-in configuration is for a quick LAN test: the server connects to
 Mosquitto at `127.0.0.1:1883`. If Mosquitto is already listening on port 1883,
@@ -70,15 +62,11 @@ reachability. The broker must allow subscriptions to `devices/+/status`,
 `devices/+/led/state`, and `devices/+/sensor/state`, and publishing to
 `devices/+/led/cmd`.
 
-### 2. Start the server
+To develop the UI, start the API and Vite in separate terminals:
 
 ```sh
 dotnet run --project server --urls http://127.0.0.1:5050
 ```
-
-### 3. Start the dashboard
-
-In another terminal:
 
 ```sh
 cd web
