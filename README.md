@@ -29,6 +29,7 @@ The drawing shows four indicator LEDs and one MOSFET-switched load.
 
 <img width="480" alt="Output On/Off" src="https://github.com/user-attachments/assets/6a82e8a0-a10f-4158-87bf-f91abb1334d9" />
 <img width="480" height="270" alt="Output PWM Control" src="https://github.com/user-attachments/assets/d8f5d60b-6983-4cd0-8572-c46ef26b8411" />
+
 ## Architecture
 
 ```mermaid
